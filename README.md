@@ -1,3 +1,3 @@
-### This repository is used for a team with <font color=red>a immensely long name</font>.
+### This repository is used for a team with ***a immensely long name***.
 * Templates
 * Typical Problems
