@@ -45,5 +45,55 @@ s.swap(s2) | 交换两个集合变量
 s.upper_bound(val) | 返回大于val值元素的迭代器
 s.lower_bound(val) | 返回指向大于（或等于）val值的第一个元素的迭代器
 #### 注意
+* set无法用下标访问
 * unordered_set只能使用前向迭代器
 * set、multiset头文件均为set，unordered_set头文件为unordered_set
+
+## stack
+用法 | 含义
+---------| -------------
+st.empty() | 堆栈为空则返回真
+st.pop() | 移除栈顶元素
+st.push(val) | 在栈顶增加元素val
+st.size() | 返回栈中元素数目
+st.top() | 返回栈顶元素
+#### 注意
+* 栈满足先入后出原则
+
+## queue
+用法 | 含义
+---------| -------------
+q.push() | 入队 
+q.pop() | 出队 
+q.front() | 返回首元素 
+q.back() | 返回末元素 
+q.size() | 输出现有元素的个数 
+q.empty() | 队列为空返回1，反之返回0
+#### 注意
+* 栈满足先入先出原则
+
+## deque（双向队列）
+用法 | 含义
+---------| -------------
+d.assign(first, last) | 将[first, last)区间中的元素赋值给d
+d.assign(n,val) | 将n个val赋值给d
+d.at(index) | 传回索引index所指的元素，如果index越界，抛出out_of_range
+d.begin() | 返回首元素地址 
+d.end() | 返回尾元素地址
+d.front() | 返回首元素
+d.back() | 返回尾元素
+d.clear() | 移除容器中所有元素
+d.empty() | 判断容器是否为空
+d.erase(pos) | 删除pos位置的元素，传回下一个元素的位置
+d.erase(first, last) | 删除[first, last)区间的元素，传回下一个元素的位置
+d.insert(pos,val) | 在pos位置插入val，传回新元素位置
+d.insert(pos,n,val) | 在pos位置插入n个val元素，无返回值
+d.insert(pos,first, last) | 在pos位置插入在[first, last)区间的元素，无返回值
+d.pop_back() | 删除最后一个元素
+d.pop_front() | 删除头部元素
+d.push_back(val) | 在尾部加入一个元素
+d.push_front(val) | 在头部插入一个元素
+d.rbegin() | 传回一个逆向队列的第一个元素
+d.rend() | 传回一个逆向队列的最后一个元素的下一个位置
+d.resize(num) | 重新指定队列的长度
+d.size() | 返回容器中实际元素的个数
