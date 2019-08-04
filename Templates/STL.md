@@ -18,7 +18,7 @@ v.erase(it) |  删除由迭代器it所指向的元素
 v.erase(first, last) |  删除由迭代器first和last所指定的序列[first, last)
 v.resize(n) |  改变序列的长度，超出的元素将会被删除，如果序列需要扩展（原空间小于n），元素默认值将填满扩展出的空间
 v.resize(n, val) |  改变序列的长度，超出的元素将会被删除，如果序列需要扩展（原空间小于n），将用val填满扩展出的空间
-v.swap(v) |  将s与另一个vector对象v进行交换
+v.swap(v2) |  将s与另一个vector对象v2进行交换
 v.assign(first, last) |  将序列替换成由迭代器first和last所指定的序列[first, last), [first, last)不能是原序列中的一部分
 #### 注意
 * vector不自带v.find()函数
