@@ -97,3 +97,22 @@ d.rbegin() | 传回一个逆向队列的第一个元素
 d.rend() | 传回一个逆向队列的最后一个元素的下一个位置
 d.resize(num) | 重新指定队列的长度
 d.size() | 返回容器中实际元素的个数
+
+## map
+用法 | 含义
+---------| -------------
+mp[0]=x | 利用数组方式插入数据，0是键，x是值
+mp.at(0)=x | 利用at执行插入操作
+mp.insert(make_pair(key,x)) | 利用insert插入pair(键，值)数据
+mp.emplace(make_pair(key,x)) | 在映射中不存在主键key时执行插入操作
+mp.size() | 返回mp的大小
+mp.count(key) | 统计键为key的元素存在的映射数，存在返回1，不存在返回0
+mp.erase(it) | 根据迭代器删除元素
+mp.clear() | 清空映射
+mp.empty() | 判断映射是否为空
+mp.find(key) | 根据键key查找元素，找到以后返回迭代器
+mp.rbegin()  | 返回反向迭代器
+mp.rend() | 返回反向迭代器
+mp.swap(mp2) | 将mp和mp2进行交换
+mp.lower_bound(key) | 返回map中第一个大于或等于key的迭代器指针
+mp.upper_bound(key) | 返回map中第一个大于key的迭代器指针
