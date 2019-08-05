@@ -31,7 +31,7 @@ s.end() | 返回指向最后一个元素的迭代器
 s.clear() | 清除所有元素
 s.empty() | 如果集合为空，返回true
 s.count(val) | 返回值为val的元素的个数
-s.erase(val) | 删除集合中值为val的元素
+s.erase(val) | 删除集合中**所有**值为val的元素
 s.erase(it) | 删除集合中迭代器it指向的元素
 s.erase(first,last) | 删除由迭代器first和last所指定的子集[first, last)
 s.equal_range(val) | 返回有序/升序集合中val元素第一次和最后一次出现的位置 
@@ -125,3 +125,14 @@ mp.rend() | 返回反向迭代器
 mp.swap(mp2) | 将mp和mp2进行交换
 mp.lower_bound(key) | 返回map中第一个大于或等于key的迭代器指针
 mp.upper_bound(key) | 返回map中第一个大于key的迭代器指针
+
+
+## lower_bound & upper_bound
+用法 | 含义
+---------| -------------
+lower_bound(first, last, val) | 在[first,last)区间进行二分查找，返回**大于或等于**val的第一个元素位置
+upper_bound(first, last, val) | 在[first,last)区间进行二分查找，返回**大于**val的第一个元素位置
+#### 注意
+* 只能作用于有序序列
+* 如果所有元素都小于val，函数返回last的位置，此时last的位置是**越界**的！
+* set::lower_bound()由于省略了再建树的过程，速度快于lower_bound()
