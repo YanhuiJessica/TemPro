@@ -1,3 +1,18 @@
+## 目录
+- [目录](#%e7%9b%ae%e5%bd%95)
+- [vector](#vector)
+    - [注意](#%e6%b3%a8%e6%84%8f)
+- [set & multiset & unordered_set](#set--multiset--unorderedset)
+    - [注意](#%e6%b3%a8%e6%84%8f-1)
+- [stack](#stack)
+    - [注意](#%e6%b3%a8%e6%84%8f-2)
+- [queue](#queue)
+    - [注意](#%e6%b3%a8%e6%84%8f-3)
+- [deque（双向队列）](#deque%e5%8f%8c%e5%90%91%e9%98%9f%e5%88%97)
+- [map](#map)
+- [pair](#pair)
+    - [使用sort对pair类型进行排序](#%e4%bd%bf%e7%94%a8sort%e5%af%b9pair%e7%b1%bb%e5%9e%8b%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f)
+
 ## vector
 用法 | 含义
 ---------| -------------
@@ -63,11 +78,11 @@ st.top() | 返回栈顶元素
 ## queue
 用法 | 含义
 ---------| -------------
-q.push() | 入队 
-q.pop() | 出队 
-q.front() | 返回首元素 
-q.back() | 返回末元素 
-q.size() | 输出现有元素的个数 
+q.push() | 入队
+q.pop() | 出队
+q.front() | 返回首元素
+q.back() | 返回末元素
+q.size() | 输出现有元素的个数
 q.empty() | 队列为空返回1，反之返回0
 #### 注意
 * 栈满足先入先出原则
@@ -78,7 +93,7 @@ q.empty() | 队列为空返回1，反之返回0
 d.assign(first, last) | 将[first, last)区间中的元素赋值给d
 d.assign(n,val) | 将n个val赋值给d
 d.at(index) | 传回索引index所指的元素，如果index越界，抛出out_of_range
-d.begin() | 返回首元素地址 
+d.begin() | 返回首元素地址
 d.end() | 返回尾元素地址
 d.front() | 返回首元素
 d.back() | 返回尾元素
@@ -97,3 +112,26 @@ d.rbegin() | 传回一个逆向队列的第一个元素
 d.rend() | 传回一个逆向队列的最后一个元素的下一个位置
 d.resize(num) | 重新指定队列的长度
 d.size() | 返回容器中实际元素的个数
+
+## map
+用法 | 含义
+---------| -------------
+mp[0]=x | 利用数组方式插入数据，0是键，x是值
+mp.at(0)=x | 利用at执行插入操作
+mp.insert(make_pair(key,x)) | 利用insert插入pair(键，值)数据
+mp.emplace(make_pair(key,x)) | 在映射中不存在主键key时执行插入操作
+mp.size() | 返回mp的大小
+mp.count(key) | 统计键为key的元素存在的映射数，存在返回1，不存在返回0
+mp.erase(it) | 根据迭代器删除元素
+mp.clear() | 清空映射
+mp.empty() | 判断映射是否为空
+mp.find(key) | 根据键key查找元素，找到以后返回迭代器
+mp.rbegin()  | 返回反向迭代器
+mp.rend() | 返回反向迭代器
+mp.swap(mp2) | 将mp和mp2进行交换
+mp.lower_bound(key) | 返回map中第一个大于或等于key的迭代器指针
+mp.upper_bound(key) | 返回map中第一个大于key的迭代器指针
+
+## pair
+#### 使用sort对pair类型进行排序
+* std::pair::operator< 按标准规定会在两个 std::pair 的第一个元素互不小于对方的情况下比较第二个元素
