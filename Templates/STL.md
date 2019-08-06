@@ -12,7 +12,8 @@
 - [map](#map)
 - [pair](#pair)
     - [使用sort对pair类型进行排序](#%e4%bd%bf%e7%94%a8sort%e5%af%b9pair%e7%b1%bb%e5%9e%8b%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f)
-
+- [string](#pair)
+    - string慎用，甚至能不用就可以不用，因为效率比较低
 ## vector
 用法 | 含义
 ---------| -------------
