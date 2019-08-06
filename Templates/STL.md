@@ -146,11 +146,7 @@ mp.rend() | 返回反向迭代器
 mp.swap(mp2) | 将mp和mp2进行交换
 mp.lower_bound(key) | 返回map中第一个大于或等于key的迭代器指针
 mp.upper_bound(key) | 返回map中第一个大于key的迭代器指针
-<<<<<<< HEAD
-##### 三种插入操作示例
-=======
 #### 三种插入操作示例
->>>>>>> 2661ff1f23aae9284b62becea865e2705d3c9a37
 ```cpp
     map<int, string> mapStudent;  
     mapStudent[0] = "student_zero";
