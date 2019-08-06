@@ -8,12 +8,15 @@
     - [注意](#%e6%b3%a8%e6%84%8f-2)
 - [queue](#queue)
     - [注意](#%e6%b3%a8%e6%84%8f-3)
+- [priority_queue（优先队列）](#priorityqueue%e4%bc%98%e5%85%88%e9%98%9f%e5%88%97)
 - [deque（双向队列）](#deque%e5%8f%8c%e5%90%91%e9%98%9f%e5%88%97)
-- [map](#map)
+- [map & multimap & unordered_map](#map--multimap--unorderedmap)
+    - [三种插入操作示例](#%e4%b8%89%e7%a7%8d%e6%8f%92%e5%85%a5%e6%93%8d%e4%bd%9c%e7%a4%ba%e4%be%8b)
+    - [注意](#%e6%b3%a8%e6%84%8f-4)
+- [lower_bound & upper_bound](#lowerbound--upperbound)
+    - [注意](#%e6%b3%a8%e6%84%8f-5)
 - [pair](#pair)
     - [使用sort对pair类型进行排序](#%e4%bd%bf%e7%94%a8sort%e5%af%b9pair%e7%b1%bb%e5%9e%8b%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f)
-- [string](#pair)
-    - string慎用，甚至能不用就可以不用，因为效率比较低
 ## vector
 用法 | 含义
 ---------| -------------
