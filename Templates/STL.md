@@ -1,5 +1,4 @@
-## 目录
-- [目录](#%e7%9b%ae%e5%bd%95)
+## 目录 <!-- omit in toc -->
 - [vector](#vector)
     - [注意](#%e6%b3%a8%e6%84%8f)
 - [set & multiset & unordered_set](#set--multiset--unorderedset)
