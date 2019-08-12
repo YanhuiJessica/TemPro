@@ -1,6 +1,7 @@
 ## Typical Mistakes
 
 ### Start
+* 打比赛前不能吃东西！
 * 初始化
   * 使用前必初始化
 
