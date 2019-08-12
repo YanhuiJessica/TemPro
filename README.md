@@ -1,7 +1,7 @@
 ### This repository is used for a team with ***an immensely long name***.
 * Templates
-  * STL
-  * Trie
+  * [STL](/Templates/STL.md)
+  * [Trie](/Templates/Trie.md)
 * Typical Problems
 * Summaries
-  * Mistakes
+  * [Mistakes](/Summaries/Mistakes.md)
