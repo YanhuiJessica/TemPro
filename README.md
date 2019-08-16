@@ -2,7 +2,7 @@
 * Templates
   * [STL](/Templates/STL.md)
   * [Trie](/Templates/Trie.md)
-  * [Math Theory (Better not open it on GitHub)](/Templates/Ma-Theory.md)
+  * [Math Theory (Better not open it on GitHub)](/Templates/Math%20Theory.md)
 * Typical Problems
 * Summaries
   * [Mistakes](/Summaries/Mistakes.md)
