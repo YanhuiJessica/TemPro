@@ -16,6 +16,9 @@
     - [注意](#%e6%b3%a8%e6%84%8f-5)
 - [pair](#pair)
     - [使用sort对pair类型进行排序](#%e4%bd%bf%e7%94%a8sort%e5%af%b9pair%e7%b1%bb%e5%9e%8b%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f)
+- [unique](#unique)
+- [其他](#%e5%85%b6%e4%bb%96)
+    - [注意](#%e6%b3%a8%e6%84%8f-6)
 ## vector
 用法 | 含义
 ---------| -------------
