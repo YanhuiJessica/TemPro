@@ -1,6 +1,5 @@
-my.cppÀï·Å×Ô¼ºµÄ´úÂë£¬±àÒë³Émy.exe
-std.cppÀï·Å±ê³Ì£¬±àÒë³Éstd.exe
-È»ºó×Ô¼ºÐÞ¸Ärand.cppÊý¾ÝÉú³ÉÆ÷£¬²¢±àÒë³Érand.exe
-×îºóÔËÐÐ Ñ­»·Ëæ»ú¶ÔÅÄ.batµÈ´ý½á¹û¼´¿É£¬¶Ô²»ÉÏ»á×Ô¶¯ÔÝÍ£
-»Ø³µ¼üÔËÐÐ
-by D_Star 2016.04.14
+my.cppé‡Œæ”¾è‡ªå·±çš„ä»£ç ï¼Œç¼–è¯‘æˆmy.exe
+std.cppé‡Œæ”¾æ ‡ç¨‹ï¼Œç¼–è¯‘æˆstd.exe
+ç„¶åŽä¿®æ”¹rand.cppæ•°æ®ç”Ÿæˆå™¨ï¼Œå¹¶ç¼–è¯‘æˆrand.exe
+æœ€åŽè¿è¡Œâ€œå¾ªçŽ¯éšæœºå¯¹æ‹.batâ€ç­‰å¾…ç»“æžœå³å¯ï¼Œå¯¹ä¸ä¸Šä¼šè‡ªåŠ¨æš‚åœ
+å›žè½¦é”®è¿è¡Œ
