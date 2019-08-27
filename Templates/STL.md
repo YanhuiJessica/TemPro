@@ -66,7 +66,7 @@
 | s.upper_bound(val)  | 返回大于val值元素的迭代器                            |
 | s.lower_bound(val)  | 返回指向大于（或等于）val值的第一个元素的迭代器      |
 #### 注意
-* set无法用下标访问
+* set无法用下标访问，迭代器也不能进行数的加减，无法直接访问第k个元素
 * set/multiset自动有序，无法使用排序函数
 * unordered_set只能使用前向迭代器
 * set、multiset头文件均为set，unordered_set头文件为unordered_set
