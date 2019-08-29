@@ -1,3 +1,4 @@
+```cpp
 // k表示从i开始和从j开始相同字符串的长度, n为字符串总长度 
 int getmin()
 {
@@ -16,3 +17,4 @@ int getmin()
 	}
 	return min(i, j); //返回起始下标 
 }
+```
