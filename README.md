@@ -4,6 +4,7 @@
   * [Trie](/Templates/Trie.md)
   * [Math Theory (Better not open it on GitHub)](/Templates/Math%20Theory.md)
     * Or you can install extension [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima) for Chrome
+  * [Geometry](/Templates/Geometry.md)
 * Typical Problems
 * Summaries
   * [Mistakes](/Summaries/Mistakes.md)
