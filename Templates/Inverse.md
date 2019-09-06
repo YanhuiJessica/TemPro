@@ -18,9 +18,8 @@
   - [其他](#其他)
   
 ## 逆元的定义与存在条件
-> $ax\equiv1 \pmod {b}$    
-> $x就是a对b的逆元$  
-> 当且仅当 $ax≡1(mod \, b)$时逆元存在
+> $ax\equiv1 \pmod {b}，x就是a对b的逆元$  
+> 当且仅当 $gcd(a,b) = 1$时逆元存在
 
 ## 逆元的求法
 ### 费马小定理
@@ -28,7 +27,7 @@
 > $p为素数$
 #### 理论
 > $若p为素数，a为正整数，且a、p互质。 则有a^{p-1} \equiv 1 (mod \,p)$  
-> 
+
 可推出$x≡a^{p−2}(mod\,p)$ ，即$a^{p−2}为a对p的逆元$
 #### 实现
 快速幂
@@ -52,19 +51,12 @@ ll exgcd(ll a, ll b, ll &x, ll &y)
     return m;
 }
 
-ll main()
+ll inv(ll a, ll b) 
 {
-    ll a, b, x, y;
-    while(~scanf("%lld%lld", &a, &b)) {
-    	if(exgcd(a,b,x,y) == 1) {
-    		x = (x%b + b) % b;
-//    		y = (1 - a*x) / b;
-    		printf("%lld\n", x);
-		}    
-	    else
-	        printf("None\n");
-	}
-    return 0;
+	ll x, y;
+	if(exgcd(a,b,x,y) == 1)
+		return (x%b + b) % b;
+	else return -1;
 }
 ```
 
