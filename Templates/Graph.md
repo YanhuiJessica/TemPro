@@ -74,3 +74,178 @@ for(int i=1;i<=n;i++)
     for(int j=1;j<=m;j++)
         mp[i][j]^=1;
 ```
+
+## 最短路
+
+### 题目
+* [P1462 通往奥格瑞玛的道路](https://www.luogu.org/problem/P1462)
+* [AC-wings 通信线路](https://www.acwing.com/problem/content/342/)
+  
+### 最短路常用算法
+#### Dijkstra
+* 适用条件：无负权边
+  * 虽说如此，但也并不是有负权就严格不能用，具体情况具体分析。比如，如果原图保证是有向无环，那么还是可以使用的。
+* 算法思想： 贪心
+  * 选择某个距离原点最近的点为中介，更新所有其他点。重复这个过程。
+  * 基于原理，可以使用堆进行优化，快速完成得到距离原点最近的点。
+* 复杂度：mlog(n)
+#### SPFA
+* 可以处理负权边
+* 算法思想：迭代
+  * 尝试以每个点为中介，更新其余点到起点的距离
+* 复杂度： km，一般k为较小常数，最坏情况nm
+* 无负权边的时候，可以采用堆优化，此时和堆优化的Dijkstra完全一致。
+### Folyd
+* 适用条件：可以求出任意两点之间的最短路
+* 算法思想：dp
+  * 最外层枚举可利用的前k个节点，之后利用新加入的节点来更新其他节点之间的最短路
+  * 其实和SPFA很像，只不过前者固定了原点
+* 应用： 
+  * 传递闭包
+* 复杂度： $n^4$
+
+### 实现
+* Dijkstra
+```cpp
+struct edge
+{
+    int pos, val;
+    edge( int pos = 0, int val = 0 ) : pos(pos), val(val) {}
+    bool operator < ( const edge &e ) const
+    {
+        return val > e.val;
+    }
+};
+vector< edge > G[maxn];
+int dis[maxn];
+bool inq[maxn];
+void Dijkstra( int s )
+{
+    memset( dis, 0x3f, sizeof( dis ) );
+    priority_queue< edge > q;
+    dis[s] = 0; q.push({s,dis[s]});
+    while( !q.empty() )
+    {
+        auto tp = q.top( ); q.pop( );
+        if ( inq[tp.pos] ) continue;
+        inq[tp.pos] = 1;
+        for ( auto v : G[tp.pos] )
+        {
+            if( dis[v.pos] > dis[tp.pos] + v.val )
+            {
+                dis[v.pos] = dis[tp.pos] + v.val;
+                if( !inq[v.pos] ) q.push( {v.pos, dis[v.pos]} );
+            }
+        }
+    }
+}
+```
+* SPFA
+```cpp
+struct node
+{
+    int to;
+    long long val;
+    node( int to = 0, long long val = 0 ) : to(to), val(val) {}
+};
+vector< node > G[maxn];
+long long dis[maxn];
+bool inq[maxn];
+void SPFA( int s )
+{
+    memset( inq, 0, sizeof( inq ) );
+    for( int i = 1; i < maxn; ++ i) dis[i] = 1E18;
+    dis[s] = 0, inq[s] = 1;
+    queue< int > q; q.push(s);
+    while( !q.empty() )
+    {
+        int x = q.front(); q.pop();
+        inq[x] = 0;
+         //这里和堆优化的区别就显现出来了，堆优化版本只会入队一次，而SPFA则不是
+        for( auto to : G[x] )
+        {
+            if( dis[to.to] > dis[x] + to.val )
+            {
+                dis[to.to] = dis[x] + to.val;
+                if( !inq[to.to] ) q.push(to.to), inq[to.to] = 1;
+            }
+        }
+    }
+}
+```
+* Floyd
+```cpp
+//最开始dp就是原图
+for( int k = 1; k <= n; ++ i )
+    for( int i = 1; i <= n; ++ i )
+        for( int j = 1; j <= n; ++ j )
+            dp[i][j] = min( dp[i][j], dp[i][k] + dp[k][j] );
+```
+### 常见套路
+* 与最短路有关的题常与二分相关联
+  * 常见问法，在满足某个调价的约束条件下，另一个条件最大或者最小。答案具有单调性。
+* 弗洛伊德经常和具有传递性关系的题目结合。或者需要知道利用某个几个节点时任意两点间的最短路，即历史状态。
+* 有时候可以考虑补图，反图(每条边的方向取反)等。
+  * 反图主要处理的就是顺序问题。比如一个图，每个点都有一个点权。若想知道到某个点的所有路径中点权最大和最小的点的点权，并且要求点权最小的点在点权最大的点之后出现，这时候就可以建立一个反图，然后从终点向起点走。
+  * 补图主要是在处理与二分图相关的问题时来进行考虑。
+
+## LCA
+### 求法
+* 倍增
+* Tarjan
+  * Tarjan主要是利用DFS顺寻。
+  * 节点分为三种，分别是正在访问，未访问，已经访问完成并且经过回溯的点
+  * 刚开始每个人的祖先都是自己
+  * 在孩子里进行递归，递归完成后将孩子的father置成自己。这样就保证了只有回溯完成后father才会变动
+  * 然后进行询问操作
+    * 如果要询问的点已经回溯完成，那么他的father就是和当前点的LCA。因为只有回溯完成的点father才会变更，并且由于dfs的原因，待询问点与当前点LCA一定是已经访问并且还未回溯的点，他的father并没有发生变化。
+    * 否则不进行处理。
+  * 回溯完成。
+### 实现
+* Tarjan
+```cpp
+int Get( int x ){ return x == fa[x] ? x : fa[x] = Get( fa[x] ); }
+void Tarjan( int s )
+{
+    vis[s] = 1;
+    for( auto to : G[s] )
+        if( !vis[to] )
+        {
+            Tarjan(to);
+            fa[to] = s;
+        }
+    for( auto to : query[s] )
+        if( vis[to] == 2 )
+        {
+            dx[to] += 1;
+            dx[s] += 1;
+            dx[Get(to)] -= 2;
+        }
+    vis[s] = 2;
+}
+```
+* 倍增
+```cpp
+void DFS( int s, int last, int depth, int distance )
+{
+    vis[s] = 1;
+    fa[s][0] = last;
+    dis[s] = distance;
+    dep[s] = depth;
+    for( int i = 1; (1 << i) <= depth; ++ i )
+        fa[s][i] = fa[fa[s][i-1]][i -1];
+
+    for( auto v : G[s] )
+        if( !vis[v.to] )
+            DFS( v.to, s, depth + 1, distance + v.w);
+}
+int Query( int x, int y )
+{
+    if( dep[x] < dep[y] ) swap(x, y);
+    while( dep[x] > dep[y] ) x = fa[x][lg[dep[x] - dep[y]] - 1];
+    if( x == y ) return x;
+    for( int k = lg[dep[x]] - 1; k >= 0; k -- )
+        if( fa[x][k] != fa[y][k] ) x = fa[x][k], y = fa[y][k];
+    return fa[x][0];
+}
+```
