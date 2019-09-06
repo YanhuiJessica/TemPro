@@ -118,7 +118,7 @@ struct edge
 };
 vector< edge > G[maxn];
 int dis[maxn];
-bool inq[maxn];
+bool vis[maxn];
 void Dijkstra( int s )
 {
     memset( dis, 0x3f, sizeof( dis ) );
@@ -127,14 +127,15 @@ void Dijkstra( int s )
     while( !q.empty() )
     {
         auto tp = q.top( ); q.pop( );
-        if ( inq[tp.pos] ) continue;
+        if ( vis[tp.pos] ) continue;
+        //要在这时候判断是否访问过，因为一个点可能会加入队列很多次，要取权值最小的一次，所以每次更新都要入队，而不是在队列里就不入队
         inq[tp.pos] = 1;
         for ( auto v : G[tp.pos] )
         {
             if( dis[v.pos] > dis[tp.pos] + v.val )
             {
                 dis[v.pos] = dis[tp.pos] + v.val;
-                if( !inq[v.pos] ) q.push( {v.pos, dis[v.pos]} );
+                q.push( {v.pos, dis[v.pos]} );
             }
         }
     }
@@ -188,7 +189,7 @@ for( int k = 1; k <= n; ++ i )
 * 有时候可以考虑补图，反图(每条边的方向取反)等。
   * 反图主要处理的就是顺序问题。比如一个图，每个点都有一个点权。若想知道到某个点的所有路径中点权最大和最小的点的点权，并且要求点权最小的点在点权最大的点之后出现，这时候就可以建立一个反图，然后从终点向起点走。
   * 补图主要是在处理与二分图相关的问题时来进行考虑。
-
+* 要分析题目性质，有时候的最短路可以基于已知信息计算出来。
 ## LCA
 ### 求法
 * 倍增
