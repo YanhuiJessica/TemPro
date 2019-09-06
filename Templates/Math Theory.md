@@ -1,3 +1,17 @@
+- [二次剩余](#二次剩余)
+  - [理论](#理论)
+  - [应用](#应用)
+- [勾股数](#勾股数)
+  - [理论](#理论-1)
+- [卡特兰数](#卡特兰数)
+  - [理论](#理论-2)
+  - [应用](#应用-1)
+  - [实现](#实现)
+- [环形染色问题](#环形染色问题)
+  - [理论](#理论-3)
+- [exgcd](#exgcd)
+  - [应用](#应用-2)
+
 ### 二次剩余
 #### 理论
 > $\exists x, 使 x^2\equiv d (mod \, p)成立, 称"d是模p的二次剩余"(d^{(p-1)\over 2}\equiv 1 (mod \, p))$
@@ -62,3 +76,33 @@ long long Catl(int n)
 
 #### 理论
 > $n$块区域的环，用$m$种不同颜色去涂，相邻格子颜色不同，共有$(m-1)^n+(-1)^n×(m-1)$种涂法
+
+### exgcd
+
+#### 应用
+求解线性同余方程
+```cpp
+//exgcd求出方程的一组特解并返回gcd(a,b) 
+ll exgcd(ll a, ll b, ll &x, ll &y)
+{
+    if(b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    ll m = exgcd(b, a%b, y, x);
+    y  -= a/b * x;
+    return m;
+}
+ll solve(ll a, ll b, ll n)//求解模线性方程 ax = b(mod n) 或 ax + ny = b
+{
+    ll x, y, x0;
+    ll d = exgcd(a, n, x, y);
+    if(b % d) //无解
+        return -1;
+    x0 = (x * (b/d)) % n; //特解
+    ll ans = x0, s = n / d;
+    ans = (ans%s + s) % s;  //ans为最小非负整数解
+    return ans;
+}
+```
