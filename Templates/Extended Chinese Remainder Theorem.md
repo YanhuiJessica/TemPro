@@ -63,3 +63,4 @@ int main() {
 	cout << (long long)realchina() << endl; //不到输出不换int128 
 }
 ```
+* 注意：返回的是最小非负整数解，有些题目需要特判
