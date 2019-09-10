@@ -250,3 +250,67 @@ int Query( int x, int y )
     return fa[x][0];
 }
 ```
+
+## 最小生成树
+### 算法
+* Kruskal
+  * $mlogm$
+* Prime
+  * $O(n^2)$
+  * 主要应用于稠密图，尤其是完全图的最小生成树求解
+### 实现
+* KrusKal
+```cpp
+int fa[maxn];
+void Init()
+{
+    for( int i = 1; i <= n; ++ i ) fa[i] = i;
+}
+int GetFa( int x ) { return  x == fa[x] ? x : fa[x] = GetFa(fa[x]); }
+bool Connect( int u, int v )
+{
+    u = GetFa(u), v = GetFa(v);
+    if( u == v ) return false;
+    fa[u] = v;
+    return true;
+}
+int KrusKal()
+{
+    int ans = 0;
+    for( auto i : e ) if( Connect( i.u, i.v ) ) ans += i.w;
+    return ans;
+}
+```
+* Prime
+```cpp
+double Prime()
+{
+    double ans = 0;
+    for( int i = 1; i <= n; ++ i ) dis[i] = INF;
+    dis[1] = 0;
+    for( int i = 1; i <= n; ++ i )
+    {
+        int x = 0;
+        for( int j = 1; j <= n; ++ j )
+            if( !vis[j] && ( x == 0 || dis[x] > dis[j] ) )
+                x = j;
+        ans += dis[x];
+        vis[x] = 1;
+        for( int j = 1; j <= n; ++ j )
+           if( !vis[j] ) dis[j] = min( dis[j], Calc( v[x], v[j] ) );
+    }
+    return ans;
+}
+```
+### 题目
+* [P1991 无线通讯网](https://www.luogu.org/problem/P1991)
+  * 最小生成树，但其中可以选择其中几条边把其边权变为0，问最大边权最小是多少
+  * 一般这种既要最大又要最小的问题都可以用二分
+  * 关键就是把那些边去掉
+    * 贪心的想肯定是去掉边权最大的几条
+    * 这样问题就转化为，枚举最大距离，当出现一条边权大于枚举的距离时有几个连通块，就要使用几次去边操作
+* [P1265 公路修建](https://www.luogu.org/problem/P1265)
+  * 由于是完全图，所以Kruskal会MLE
+  * 考虑用Prime
+    * 但是空间依然不够用
+    * 其实不用存下来每两点之间的距离，只要在更新时计算就好了
