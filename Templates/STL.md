@@ -12,6 +12,7 @@
 - [map & multimap & unordered_map](#map--multimap--unordered_map)
     - [三种插入操作示例](#三种插入操作示例)
     - [注意](#注意-4)
+- [list](#list)
 - [lower_bound & upper_bound](#lower_bound--upper_bound)
     - [注意](#注意-5)
 - [pair](#pair)
@@ -160,6 +161,26 @@
 * map的键值key不可重复，具有严格的一一对应关系，而multimap可以一个键对应多个值
 * map支持[ ]运算符，multimap不支持[ ]运算符
 * map/multimap中的元素是自动按key升序排序，不能使用sort函数
+
+## list
+| 用法                          | 含义                                                                  |
+| ----------------------------- | --------------------------------------------------------------------- |
+|l.begin()|返回链表首地址|
+|l.end()|返回链表尾地址|
+|l.front()|返回首元素|
+|l.back()|返回尾元素|
+|l.push_back(elem)|插入元素到链表尾部|
+|l.push_front(elem)|插入元素到链表头部|
+|l.empty()|判断链表是否为空|
+|l.insert(it, val1, val2))|在指定位置插入一个或多个元素|
+|l.resize(n)|调整链表大小为n，超出n删除，少于n补0|
+|l.clear()|清除|
+|l.assign(len, val)|替换所有元素|
+|l.assign(l2.begin(), l2.end())|替换所有元素为链表l2|
+|l.swap(l2)|交换链表|
+|l.merge(l2)|合并两个**有序**链表中的元素，调用后l2为空，可用greater<int>()|
+|l.erase(it)|删除（区域中的）元素|
+|l.remove(val)|删除值为val 的元素|
 
 
 ## lower_bound & upper_bound
