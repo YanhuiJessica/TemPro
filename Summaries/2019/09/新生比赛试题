@@ -1,0 +1,76 @@
+## Replacement(难题)
+* 题意：给定字符串长度，和询问个数。输出每个寻问之后需要多少步可以使字符串无法被化简。
+  * 所谓化简指的是两个相邻的"."可以经过一步变成一个".",即".."可以变成"."
+* 解法：容易发现，设有segNum段连续的".",总共有dotNum个"."，答案就是dotNum - dotNum。问题就变成怎么维护有几段连续的"."。
+  * 只要在每个变化的时候判断一下他左右的字符是什么即可。
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+int dotNum, segNum, pre, n, q, pos;
+string s;
+void init() {
+    for(int i = 0; i < n; i++) {
+        if(s[i] == '.') dotNum++, pre = 1;
+        if(s[i] != '.' && pre == 1) segNum++, pre = 0;
+    }
+    if(s[n-1] == '.') segNum++;
+}
+int main()
+{
+    char c;
+    cin >> n >> q;
+    cin >> s;
+    init();
+    while(q--) {
+        cin >> pos >> c;
+        if((c == '.' && s[pos-1] == '.') || (c != '.' && s[pos-1] != '.')) {
+            cout << dotNum - segNum << endl; continue;
+        }
+        if(c != '.') {
+            dotNum--;
+            s[pos-1] = c;
+            if(pos == 1 && s[pos-1+1] != '.') segNum--;
+            else if(pos == n && s[pos-1-1] != '.') segNum--;
+            else if(s[pos-1-1] != '.' && s[pos-1+1] != '.') segNum--;
+            else if(s[pos-1-1] == '.' && s[pos-1+1] == '.') segNum++;
+        }
+        else {
+            dotNum++;
+            s[pos-1] = '.';
+            if(pos == 1 && s[pos-1+1] != '.') segNum++;
+            else if (pos == n && s[pos-1-1] != '.') segNum++;
+            else if(s[pos-1-1] != '.' && s[pos-1+1] != '.') segNum++;
+            else if(s[pos-1-1] == '.' && s[pos-1+1] == '.') segNum--;
+        }
+        cout << dotNum - segNum << endl;
+    }
+}
+```
+## A Problem about Polyline 
+* 题意：在坐标轴上给出连续不断的三角形波，问经过点（a，b）的最小x是什么。
+* 解法：
+  * 容易发现，当a < b时无解，否则一定有解
+  * 然后枚举点在三角形左边的边上还是右边的边上，分别算出答案，取较小的x即可
+``` cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn = 1E6 + 5;
+ 
+int main()
+{
+    int a, b;
+    cin >> a >> b;
+    if( a < b ) cout << -1 << endl;
+    else if( a == b ) cout << a << endl;
+    else
+    {
+        double ans1 = 1.0 * ( a + b ) / 2, ans2 = 1.0 * ( a - b ) / 2;
+        int time1 = floor( ans1 / b ), time2 = floor( ans2 / b );
+        ans1 /= time1;
+        if( ans2 < b )
+            printf("%.12f\n", ans1 );
+        else
+            printf("%.12lf\n", min( ans1, ans2 / time2 ) );
+    }
+}
+```
