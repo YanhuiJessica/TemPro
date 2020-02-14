@@ -1,3 +1,5 @@
+- [排列](#排列)
+	- [Cycle notation](#cycle-notation)
 - [二次剩余](#二次剩余)
 	- [理论](#理论)
 	- [应用](#应用)
@@ -15,6 +17,18 @@
 - [拓展中国剩余定理](#拓展中国剩余定理)
 	- [原理](#原理-1)
 	- [实现](#实现-1)
+
+## 排列
+
+### Cycle notation
+
+Cycle notation 描述了排列对集合元素造成的影响。对于同一排列，通常存在多种 cycle notations。
+
+$\left( \begin{matrix} 1 & 2 & 3 & 4 & 5 \\ 2 & 5 & 4 & 3 & 1 \end{matrix} \right) = \left( \begin{matrix} 1 & 2 & 5 \end{matrix} \right)\left( \begin{matrix} 3 & 4 \end{matrix} \right) = \left( \begin{matrix} 3 & 4 \end{matrix} \right)\left( \begin{matrix} 5 & 1 & 2 \end{matrix} \right)$
+
+> In general, a cycle of length k, that is, consisting of k elements, is called a k-cycle.
+
+2-cycle: $\left( \begin{matrix} 3 & 4 \end{matrix} \right)$
 
 ## 二次剩余
 ### 理论
@@ -34,7 +48,7 @@ $x=\frac{c}{d}x_0+k\frac{b}{d},y=\frac{c}{d}y0+k\frac{a}{d} ,\, k$取遍整数�
 ### 应用
 求解线性同余方程
 ```cpp
-//exgcd求出方程的一组特解并返回gcd(a,b) 
+//exgcd求出方程的一组特解并返回gcd(a,b)
 ll exgcd(ll a, ll b, ll &x, ll &y)
 {
     if(b == 0) {
