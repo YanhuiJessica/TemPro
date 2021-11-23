@@ -1,16 +1,30 @@
 ### 小数点精度控制
+
 #### 方法
+
 1. ```py
    "%.2f"%x
    ```
 2. ```py
-   round(num,x) #数num,保留小数点后x位
+   round(num,x) # 数num,保留小数点后x位
    ```
+
 #### 注意
+
 并非完全的四舍五入,当小数出现5,如2.5,取**最近的偶数**。
 
 ### 输入
+
+#### 获取命令行参数
+
+```py
+import sys
+
+print(type(sys.argv), sys.argv)
+```
+
 #### 未知数量的多组输入,EOF结束
+
 ```py
 while True:
     try:
@@ -19,7 +33,9 @@ while True:
     except EOFError:
         break
 ```
+
 #### 未知数量的多组输入,结束符给定
+
 ```py
 while True:
     a = int(input())
@@ -27,7 +43,9 @@ while True:
         break
     print(a)
 ```
+
 #### 每行第一个数代表该行数的个数
+
 ```py
 data = list(map(int,input().split()))
 n, a = data[0], data[1:]
