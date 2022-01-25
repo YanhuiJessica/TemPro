@@ -66,6 +66,46 @@ print(sum)
 ```
 
 ### 二维数组
+
 ```py
 a = [[0] * m for i in range(n)] # n * m矩阵
+```
+
+### 进制/类型转换
+
+```py
+#!/usr/bin/python3
+
+import codecs
+
+codecs.encode(b'Python3','hex')
+# b'507974686f6e33'
+
+b'Python3'.hex()
+# '507974686f6e33'
+
+bytes.fromhex('507974686f6e33')
+codecs.decode(b'507974686f6e33', 'hex')
+# b'Python3'
+
+int('0x33', 16)
+# 51
+
+hex(51)
+# '0x33'
+
+int('110011', 2)
+# 51
+
+bin(33)
+# '0b100001'
+
+# (ΦˋωˊΦ)＝З
+f'{0b110011:#0}'
+# '51'
+
+# :#b -> converts to binary
+# :#o -> converts to octal
+# :#x -> converts to hexadecimal 
+# :#0 -> converts to decimal as above
 ```
