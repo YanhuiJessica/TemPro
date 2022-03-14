@@ -65,10 +65,13 @@ for i in range(n):
 print(sum)
 ```
 
-### 二维数组
+### 数组
 
 ```py
-a = [[0] * m for i in range(n)] # n * m矩阵
+l = [[]] * 3 # 浅拷贝
+l = [[] for _ in range(3)] # 深拷贝
+
+a = [[0] * m for i in range(n)] # n * m 矩阵
 ```
 
 ### 进制/类型转换
